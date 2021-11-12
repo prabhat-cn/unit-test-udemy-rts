@@ -43,4 +43,18 @@ it('counter display starts at 0', () => {
   expect(counterData).toBe('0');
 });
 
-it('clicking button increments counter display', () => {});
+it('clicking button increments counter display', () => {
+  const wrapper = setup();
+  const incrementButton = wrapper.find('[data-test="increment-button"]');
+  incrementButton.simulate('click');
+  const counterData = findByTestAttr(wrapper, 'count').text();
+  expect(counterData).toBe('1');
+});
+
+it('clicking button decrements counter display', () => {
+  const wrapper = setup();
+  const decrementButton = wrapper.find('[data-test="decrement-button"]');
+  decrementButton.simulate('click');
+  const counterData = findByTestAttr(wrapper, 'count').text();
+  expect(counterData).toBe('0');
+});
