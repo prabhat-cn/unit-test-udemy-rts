@@ -37,6 +37,10 @@ it('render counter display', () => {
   expect(counterDisplay.length).toBe(1);
 });
 
-it('counter display starts at 0', () => {});
+it('counter display starts at 0', () => {
+  const wrapper = setup();
+  const counterData = findByTestAttr(wrapper, 'count').text();
+  expect(counterData).toBe('0');
+});
 
 it('clicking button increments counter display', () => {});
