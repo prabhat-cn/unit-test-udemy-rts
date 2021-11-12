@@ -1,10 +1,9 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 import Congrats from '../Congrats';
 import { findByTestAttr } from '../../../../globalTestFiles/test.utils';
+import '../../../../setupTests';
 
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 const setup = (props = {}) =>
   // props = {success: true}
   // shallow(<Congrats success = {true} />);
@@ -29,7 +28,7 @@ it('render no text when "success" prop is false', () => {
   expect(congComponent.text()).toBe('');
 });
 
-it('render non-empty congrats message when success prop is true', () => {
+it('render non-empty congrats message when `success` prop is true', () => {
   const wrapper = setup({ success: true });
   const congratsMsg = findByTestAttr(wrapper, 'congrats-message');
   expect(congratsMsg.text().length).not.toBe(0);

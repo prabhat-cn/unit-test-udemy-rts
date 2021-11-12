@@ -22,6 +22,10 @@ npm i --save-dev babel-plugin-react-remove-properties
 
 npm i --save-dev enzyme @wojtekmaj/enzyme-adapter-react-17
 
+# test prop types
+
+Prop type does not required in typescript
+
 ## Removing data-test attributes before build
 
 -> npm i --save-dev babel-plugin-react-remove-properties

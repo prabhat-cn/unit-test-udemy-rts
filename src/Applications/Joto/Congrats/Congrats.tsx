@@ -1,10 +1,3 @@
-// receive the success state
-/**
- * Functional react component for congratulatory message.
- * @function
- * @param {object} props - React props.
- * @returns {JSX.Element} - Rendered component (or null if `success` prop is false).
- */
 import React from 'react';
 
 // const Congrats = ({ success }) => {
@@ -26,10 +19,5 @@ const Congrats: React.FC<Props> = (props: Props) => {
     return <div data-test="component-congrats" />;
   }
 };
-
-// pass here for testing
-// Congrats.propTypes = {
-//   success: PropTypes.bool.isRequired,
-// };
 
 export default Congrats;
