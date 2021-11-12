@@ -27,13 +27,13 @@ it('renders without error', () => {
 
 it('render increment button', () => {
   const wrapper = setup();
-  const incrementButton = wrapper.find('[data-test="increment-button"]');
+  const incrementButton = findByTestAttr(wrapper, 'increment-button');
   expect(incrementButton.length).toBe(1);
 });
 
 it('render counter display', () => {
   const wrapper = setup();
-  const counterDisplay = wrapper.find('[data-test="counter-display"]');
+  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
   expect(counterDisplay.length).toBe(1);
 });
 
