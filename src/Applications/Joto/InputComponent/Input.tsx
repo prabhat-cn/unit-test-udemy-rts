@@ -3,9 +3,10 @@ import React from 'react';
 
 interface Props {
   success: boolean;
+  secretWord: string;
 }
 
-const Input: React.FC<Props> = ({ success }) => {
+const Input: React.FC<Props> = ({ success, secretWord }) => {
   // by mock "React.useState"
   const [currentGuess, setCurrentGuess] = React.useState('');
   // const { success } = useSelector((state) => state.success);

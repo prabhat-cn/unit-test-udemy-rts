@@ -3,9 +3,11 @@ import { mount, shallow } from 'enzyme';
 import Input from '../Input';
 import { findByTestAttr } from '../../../../globalTestFiles/test.utils';
 import '../../../../setupTests';
+import { exists } from 'fs';
 
 const defaultProps = {
   success: false,
+  secretWord: 'party',
 };
 
 // Mock entire module for destructuring useState on import ///
@@ -23,10 +25,53 @@ const setup = (props = {}) => {
   return shallow(<Input {...setupProps} />);
 };
 
-it('Input renders without error', () => {
-  const wrapper = setup();
-  const inputComponent = findByTestAttr(wrapper, 'component-input');
-  expect(inputComponent.length).toBe(1);
+// it('Input renders without error', () => {
+//   const wrapper = setup();
+//   const inputComponent = findByTestAttr(wrapper, 'component-input');
+//   expect(inputComponent.length).toBe(1);
+// });
+
+describe('render success', () => {
+  describe('success is true', () => {
+    let wrapper: any;
+    beforeEach(() => {
+      wrapper = setup(true);
+    });
+    it('Input renders without error', () => {
+      // const wrapper = setup();
+      const inputComponent = findByTestAttr(wrapper, 'component-input');
+      expect(inputComponent.length).toBe(1);
+    });
+    it('Input box does not show', () => {
+      const inputBox = findByTestAttr(wrapper, 'input-box');
+      expect(inputBox.exists()).toBe(true);
+    });
+
+    it('Submit button does not show', () => {
+      const submitButton = findByTestAttr(wrapper, 'submit-button');
+      expect(submitButton.exists()).toBe(true);
+    });
+  });
+  describe('success is false', () => {
+    let wrapper: any;
+    beforeEach(() => {
+      wrapper = setup(false);
+    });
+    it('Input renders without error', () => {
+      // const wrapper = setup();
+      const inputComponent = findByTestAttr(wrapper, 'component-input');
+      expect(inputComponent.length).toBe(1);
+    });
+    it('Input box shows', () => {
+      const inputBox = findByTestAttr(wrapper, 'input-box');
+      expect(inputBox.exists()).toBe(true);
+    });
+
+    it('Submit button shows', () => {
+      const submitButton = findByTestAttr(wrapper, 'submit-button');
+      expect(submitButton.exists()).toBe(true);
+    });
+  });
 });
 
 describe('state controlled input field', () => {
