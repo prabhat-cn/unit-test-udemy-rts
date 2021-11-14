@@ -9,7 +9,7 @@ interface Props {}
 
 const App = (props: Props) => {
   return (
-    <div className=" container App">
+    <div className=" container App" data-test="component-app">
       <h1>Unit Testing React Typescript</h1>
       <br />
       <h2>Created Applications Below</h2>
