@@ -10,7 +10,7 @@ interface combineProps {
   guessedWords: Props[];
 }
 
-const GuessedWords = (props: combineProps) => {
+const GuessedWords: React.FC<combineProps> = (props: combineProps) => {
   let contents;
   if (props.guessedWords.length === 0) {
     contents = (
