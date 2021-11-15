@@ -20,7 +20,7 @@ const Table: React.FC = () => {
     getTodoData();
   }, []);
   return (
-    <>
+    <div className="table-class" data-test="component-table">
       <table className="table">
         <thead>
           <tr>
@@ -34,7 +34,7 @@ const Table: React.FC = () => {
           {allTodos &&
             allTodos.reverse().map((todo: Todo, index) => (
               <tr key={todo.id}>
-                <th scope="row">{index + 1}</th>
+                <td scope="row">{index + 1}</td>
                 <td>{todo.title}</td>
                 <td>
                   {todo.completed && todo.completed === true ? (
@@ -47,7 +47,7 @@ const Table: React.FC = () => {
             ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
