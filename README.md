@@ -4,6 +4,8 @@
 
 npm i @types/enzyme @types/enzyme-adapter-react-16
 
+npm i @types/moxios
+
 ## dev dependencies
 
 https://jestjs.io/docs/webpack
@@ -25,6 +27,10 @@ npm i --save-dev enzyme @wojtekmaj/enzyme-adapter-react-17
 # test prop types
 
 Prop type does not required in typescript
+
+# to test axios use moxios
+
+npm i --save-dev moxios
 
 ## Removing data-test attributes before build
 
