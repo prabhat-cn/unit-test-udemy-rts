@@ -6,6 +6,7 @@ import Congrats from './Applications/Joto/Congrats/Congrats';
 import GuessedWords from './Applications/Joto/GuessedWords/GuessedWords';
 import Input from './Applications/Joto/InputComponent/Input';
 import { getSecretWord } from './actions';
+import Todo from './Applications/Todo/Todo';
 
 interface Props {}
 
@@ -24,6 +25,8 @@ const App = (props: Props) => {
       <h1>Unit Testing React Typescript</h1>
       <br />
       <h2>Created Applications Below</h2>
+      <br />
+      <Todo />
       <Counter />
       <br />
       <br />
