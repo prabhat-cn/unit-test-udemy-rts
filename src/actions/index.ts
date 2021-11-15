@@ -3,10 +3,10 @@ import axios from 'axios';
 
 interface Props {}
 
-export const getSecretWord = () => {
+export const getSecretWord: any = () => {
   // Write actual action in Redux / Context sections
   return axios.get(`http://localhost:3030`).then((response) => {
-    // console.log(response);
+    console.log('data', response);
 
     return response.data;
   });

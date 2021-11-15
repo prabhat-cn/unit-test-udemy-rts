@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './Applications/ClickCounter/Counter';
 import Congrats from './Applications/Joto/Congrats/Congrats';
 import GuessedWords from './Applications/Joto/GuessedWords/GuessedWords';
 import Input from './Applications/Joto/InputComponent/Input';
+import { getSecretWord } from './actions';
 
 interface Props {}
 
@@ -12,7 +13,12 @@ const App = (props: Props) => {
   // get props from shared state
   const success = false;
   const secretWord = 'party';
-  const guessedWords = [];
+  // because the guessedSWords file is data format is below
+  const guessedWords = [{ guessedWord: '', letterMatchCount: 0 }];
+
+  useEffect(() => {
+    getSecretWord();
+  }, []);
   return (
     <div className=" container App" data-test="component-app">
       <h1>Unit Testing React Typescript</h1>
@@ -27,7 +33,7 @@ const App = (props: Props) => {
         guessedWords={[{ guessedWord: 'train', letterMatchCount: 3 }]}
       /> */}
       <Input success={success} secretWord={secretWord} />
-      <GuessedWords guessedWords={[]} />
+      <GuessedWords guessedWords={guessedWords} />
     </div>
   );
 };
