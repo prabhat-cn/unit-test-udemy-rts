@@ -1,13 +1,13 @@
 import React from 'react';
 import Table from './Table';
 
-interface Props {}
+// interface Props {}
 
-const Todo = (props: Props) => {
+const Todo: React.FC = () => {
   return (
-    <div className="table-inner" data-table="component-todo">
+    <div className="table-inner" data-test="component-todo">
       <h2>Todo Crud Without Redux</h2>
-      <Table />
+      {/* <Table /> */}
     </div>
   );
 };
