@@ -5,7 +5,7 @@ interface Props {}
 
 export const getSecretWord: any = () => {
   // Write actual action in Redux / Context sections
-  return axios.get(`/`).then((response) => {
+  return axios.get('/word').then((response) => {
     // console.log('data', response);
 
     return response.data;

@@ -2,6 +2,7 @@
   "name": "unit-test-rts",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3030",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -49,7 +50,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3030",
   "devDependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "babel-jest": "^26.6.0",

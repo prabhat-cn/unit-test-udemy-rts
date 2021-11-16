@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Todo } from './model/Model';
+import { getTodoData } from './services/TodoService';
 
 const API = `${process.env.REACT_APP_API}`;
 
 const Table: React.FC = () => {
   const [allTodos, setAllTodos] = React.useState<Todo[]>([]);
-  const getTodoData = () => {
+  const getTodoDatas = () => {
     axios.get(API + `/todos`).then((response) => {
       // console.log('getTodoData', response);
       const { data, status } = response;
@@ -14,9 +15,11 @@ const Table: React.FC = () => {
         setAllTodos(data);
       }
     });
+    getTodoData();
   };
 
   useEffect(() => {
+    getTodoDatas();
     getTodoData();
   }, []);
   return (

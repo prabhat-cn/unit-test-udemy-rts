@@ -9,7 +9,7 @@ const setup = (props = {}) => {
   return mount(<Todo />);
 };
 
-describe('Todo main component test', () => {
+describe.skip('Todo main component test', () => {
   let wrapper: any;
   beforeEach(() => {
     wrapper = setup();
@@ -27,7 +27,7 @@ describe('Todo main component test', () => {
   });
 });
 
-describe('Access Todo table', () => {
+describe.skip('Access Todo table', () => {
   let wrapper: any;
   beforeEach(() => {
     wrapper = setup();
