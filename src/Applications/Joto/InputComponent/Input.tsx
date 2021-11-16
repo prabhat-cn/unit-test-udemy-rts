@@ -1,15 +1,16 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../../../reducers/typeHelper';
 
 interface Props {
   success: boolean;
   secretWord: string;
 }
 
-const Input: React.FC<Props> = ({ success, secretWord }) => {
+const Input: React.FC<Props> = ({ secretWord }) => {
   // by mock "React.useState"
   const [currentGuess, setCurrentGuess] = React.useState('');
-  // const { success } = useSelector((state) => state.success);
+  const success = useTypedSelector((state) => state.success);
   // for testing
   if (success) {
     return <div data-test="component-input" />;

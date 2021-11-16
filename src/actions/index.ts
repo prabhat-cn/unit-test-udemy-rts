@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-interface Props {}
+interface PropsAction {
+  success: boolean;
+  secretWord: string;
+}
 
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
