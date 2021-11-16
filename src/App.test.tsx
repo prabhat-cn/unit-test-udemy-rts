@@ -1,5 +1,6 @@
 import React from 'react';
-import { findByTestAttr } from './globalTestFiles/test.utils';
+import { Provider } from 'react-redux';
+import { findByTestAttr, storeFactory } from './globalTestFiles/test.utils';
 import App from './App';
 import { mount, shallow } from 'enzyme';
 import { getSecretWord as mockGetSecretWord } from './actions';
@@ -7,10 +8,17 @@ import { getSecretWord as mockGetSecretWord } from './actions';
 // Activate global mock to make sure getSecretWord doesn't make network call
 jest.mock('./actions');
 
-const setup = () => {
+const setup = (initialState = {}) => {
   // return shallow(<App />);
   // if use useEffect function
-  return mount(<App />);
+  // return mount(<App />);
+  // after using redux to dom rendering
+  const store = storeFactory(initialState);
+  return mount(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 };
 
 it('renders without error', () => {

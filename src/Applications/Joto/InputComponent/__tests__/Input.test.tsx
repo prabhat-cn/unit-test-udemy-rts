@@ -1,9 +1,12 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { mount, shallow } from 'enzyme';
 import Input from '../Input';
-import { findByTestAttr } from '../../../../globalTestFiles/test.utils';
+import {
+  findByTestAttr,
+  storeFactory,
+} from '../../../../globalTestFiles/test.utils';
 import '../../../../setupTests';
-import { exists } from 'fs';
 
 const defaultProps = {
   success: false,
@@ -20,9 +23,16 @@ const defaultProps = {
 //   useState: (initialState: any) => [initialState, mockSetCurrentGuess],
 // }));
 
-const setup = (props = {}) => {
+const setup = (initialState = {}, props = {}) => {
+  const store = storeFactory(initialState);
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<Input {...setupProps} />);
+  // return shallow(<Input {...setupProps} />);
+  // after using redux and useEffect
+  return mount(
+    <Provider store={store}>
+      <Input {...setupProps} />
+    </Provider>
+  );
 };
 
 // it('Input renders without error', () => {
@@ -35,7 +45,7 @@ describe('render success', () => {
   describe('success is true', () => {
     let wrapper: any;
     beforeEach(() => {
-      wrapper = setup(true);
+      wrapper = setup({ success: true });
     });
     it('Input renders without error', () => {
       // const wrapper = setup();
@@ -44,18 +54,19 @@ describe('render success', () => {
     });
     it('Input box does not show', () => {
       const inputBox = findByTestAttr(wrapper, 'input-box');
-      expect(inputBox.exists()).toBe(true);
+      expect(inputBox.exists()).toBe(false);
     });
 
     it('Submit button does not show', () => {
       const submitButton = findByTestAttr(wrapper, 'submit-button');
-      expect(submitButton.exists()).toBe(true);
+      expect(submitButton.exists()).toBe(false);
     });
   });
   describe('success is false', () => {
     let wrapper: any;
     beforeEach(() => {
-      wrapper = setup(false);
+      // after using reducer
+      wrapper = setup({ success: false });
     });
     it('Input renders without error', () => {
       // const wrapper = setup();
@@ -85,7 +96,9 @@ describe('state controlled input field', () => {
     mockSetCurrentGuess.mockClear();
     originalUseState = React.useState;
     React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
-    wrapper = setup();
+    // wrapper = setup();
+    // after passing redux
+    wrapper = setup({ success: false });
   });
   // after describe original useState
   afterEach(() => {
