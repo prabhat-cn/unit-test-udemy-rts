@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Todo from '../Todo';
-import Table from '../Table';
+import TableComponent from '../TableComponent';
 import { findByTestAttr } from '../../../globalTestFiles/test.utils';
 import '../../../setupTests';
 
@@ -9,7 +9,7 @@ const setup = (props = {}) => {
   return mount(<Todo />);
 };
 
-describe.skip('Todo main component test', () => {
+describe('Todo main component test', () => {
   let wrapper: any;
   beforeEach(() => {
     wrapper = setup();
@@ -25,17 +25,24 @@ describe.skip('Todo main component test', () => {
     // const todoComponent = wrapper.find('.table-inner');
     expect(todoComponent).toHaveLength(1);
   });
+  it('table component exists', () => {
+    // const wrapper = setup();
+    const tableTag = wrapper.find(TableComponent);
+    expect(tableTag.exists()).toBe(true);
+  });
 });
 
-describe.skip('Access Todo table', () => {
-  let wrapper: any;
-  beforeEach(() => {
-    wrapper = setup();
-  });
-  it('dive to table tag', () => {
-    // find the <Table />
-    let tableTag = wrapper.find(Table).find('[data-test="component-table"]');
-    // console.log(tableTag.debug());
-    expect(tableTag.length).toBe(1);
-  });
-});
+// describe('Access Todo table', () => {
+//   let wrapper: any;
+//   beforeEach(() => {
+//     wrapper = setup();
+//   });
+//   it('dive to table tag', () => {
+//     // find the <Table />
+//     let tableTag = wrapper
+//       .find(TableComponent)
+//       .find('[data-test="component-table"]');
+//     // console.log(tableTag.debug());
+//     expect(tableTag.length).toBe(1);
+//   });
+// });

@@ -3,24 +3,33 @@ import axios from 'axios';
 import { Todo } from './model/Model';
 import { getTodoData } from './services/TodoService';
 
-const API = `${process.env.REACT_APP_API}`;
+// const API = `${process.env.REACT_APP_API}`;
+// const getTodoDatas = () => {
+//   axios.get(API + `/todos`).then((response) => {
+//     // console.log('getTodoData', response.data);
+//     const { data, status } = response;
+//     if (status === 200) {
+//       // const newData = data.map((item: any) => item.title);
+//       // console.log('getTodoData', data);
 
-const Table: React.FC = () => {
+//       setAllTodos(data);
+//     }
+//   });
+//   // getTodoData();
+// };
+
+const TableComponent: React.FC = () => {
   const [allTodos, setAllTodos] = React.useState<Todo[]>([]);
-  const getTodoDatas = () => {
-    axios.get(API + `/todos`).then((response) => {
-      // console.log('getTodoData', response);
-      const { data, status } = response;
-      if (status === 200) {
-        setAllTodos(data);
-      }
-    });
-    getTodoData();
-  };
 
   useEffect(() => {
-    getTodoDatas();
-    getTodoData();
+    getTodoData().then((response: any) => {
+      // const { data, status } = response;
+      if (response.status === 200) {
+        const newData = response.data.map((item: any) => item.title);
+        // console.log('getTodoData', data);
+        setAllTodos(response.data);
+      }
+    });
   }, []);
   return (
     <div className="table-class" data-test="component-table">
@@ -34,7 +43,7 @@ const Table: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {allTodos &&
+          {allTodos.length > 0 &&
             allTodos.reverse().map((todo: Todo, index) => (
               <tr key={todo.id}>
                 <td scope="row">{index + 1}</td>
@@ -54,4 +63,4 @@ const Table: React.FC = () => {
   );
 };
 
-export default Table;
+export default TableComponent;

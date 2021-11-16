@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test && jest --watchAll --detectOpenHandles",
+    "test": "react-scripts test",
     "test:force": "jest --force-exit --detectOpenHandles",
     "test:watch": "jest --watch --detectOpenHandles",
     "test:cov": "jest --coverage --force-exit --detectOpenHandles",
