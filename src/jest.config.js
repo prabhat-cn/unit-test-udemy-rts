@@ -19,4 +19,5 @@ module.exports = {
   ],
   injectGlobals: true,
   testEnvironment: 'node',
+  resetMocks: false,
 };

@@ -10,6 +10,7 @@ interface PropsAction {
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
+  SET_SECRET_WORD: 'SET_SECRET_WORD',
 };
 
 export function correctGuess() {
@@ -32,11 +33,19 @@ export const guessWord = (guessedWord: any) => {
   };
 };
 
-export const getSecretWord: any = () => {
-  // Write actual action in Redux / Context sections
-  return axios.get('/word').then((response) => {
-    // console.log('data', response);
+//  Redux Thunk USED
 
-    return response.data;
-  });
+export const getSecretWord: any = () => {
+  // Redux thunk
+  return function (dispatch: any) {
+    // Write actual action in Redux / Context sections
+    return axios.get('/word').then((response) => {
+      // console.log('data', response);
+      // return response.data;
+      dispatch({
+        type: actionTypes.SET_SECRET_WORD,
+        payload: response.data,
+      });
+    });
+  };
 };

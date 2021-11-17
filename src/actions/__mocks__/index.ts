@@ -3,5 +3,6 @@ export default module.exports = {
   // import statement
   __esModule: true,
   // update return value for Redux/ Context implementation
-  getSecretWord: jest.fn().mockReturnValue(Promise.resolve('party')),
+  // getSecretWord: jest.fn().mockReturnValue(Promise.resolve('party')),
+  getSecretWord: jest.fn().mockReturnValue({ type: 'mock' }),
 };
