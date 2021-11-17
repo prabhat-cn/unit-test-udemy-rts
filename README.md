@@ -55,3 +55,5 @@ then start static build server by -> serve -s build
 # then start static build server by
 
 -> sudo serve -s build
+
+loading spinner test-> sec-12-> v.118
