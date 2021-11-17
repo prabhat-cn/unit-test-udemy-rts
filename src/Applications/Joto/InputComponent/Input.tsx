@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTypedSelector } from '../../../reducers/typeHelper';
+import { guessWord } from '../../../actions';
 
 interface Props {
   success: boolean;
@@ -10,6 +11,8 @@ interface Props {
 const Input: React.FC<Props> = ({ secretWord }) => {
   // by mock "React.useState"
   const [currentGuess, setCurrentGuess] = React.useState('');
+  // const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const success = useTypedSelector((state) => state.success);
   // for testing
   if (success) {
@@ -33,6 +36,8 @@ const Input: React.FC<Props> = ({ secretWord }) => {
           onClick={(evt) => {
             evt.preventDefault();
             setCurrentGuess('');
+            // after using redux
+            dispatch(guessWord(currentGuess));
           }}
         >
           Submit

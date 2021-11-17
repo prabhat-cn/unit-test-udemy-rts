@@ -13,6 +13,7 @@ const reducers = combineReducers({
 export default reducers;
 //This RootState is required to use useSelector later on
 export type RootState = ReturnType<typeof reducers>;
+// export type AppDispatch = typeof reducers;
 
 // export default combineReducers({
 //   success: successReducer,
